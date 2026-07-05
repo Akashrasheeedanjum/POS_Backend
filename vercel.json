@@ -3,5 +3,5 @@
   "framework": "nestjs",
   "buildCommand": null,
   "outputDirectory": null,
-  "installCommand": "npm install"
+  "installCommand": "pnpm install"
 }
