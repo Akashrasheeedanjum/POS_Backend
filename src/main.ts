@@ -6,6 +6,20 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
+  const requiredEnv = [
+    'MONGO_URI',
+    'JWT_SECRET',
+    'JWT_EXPIRES',
+    'CLERK_SECRET_KEY',
+  ];
+  const missingEnv = requiredEnv.filter((key) => !process.env[key]);
+
+  if (missingEnv.length > 0) {
+    throw new Error(
+      `Missing required environment variables: ${missingEnv.join(', ')}. Add them in Vercel → Project Settings → Environment Variables, then redeploy.`,
+    );
+  }
+
   const app = await NestFactory.create(AppModule, { cors: true });
 
   // Enable CORS
@@ -80,4 +94,7 @@ async function bootstrap() {
   );
 }
 
-bootstrap();
+bootstrap().catch((error) => {
+  console.error('NestJS bootstrap failed:', error?.message || error);
+  process.exit(1);
+});
