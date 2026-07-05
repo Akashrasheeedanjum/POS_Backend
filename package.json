@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "nest build",
-    "vercel-build": "echo Vercel uses api/index.ts directly",
+    "vercel-build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -51,6 +51,7 @@
     "cloudinary": "^1.41.3",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
+    "express": "^4.22.2",
     "image-size": "^1.1.1",
     "lodash": "^4.17.21",
     "mongoose": "^8.1.0",
