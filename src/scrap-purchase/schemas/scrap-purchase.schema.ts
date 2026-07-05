@@ -10,37 +10,41 @@ export enum ScrapPurchaseStatus {
 
 @Schema({ versionKey: false, timestamps: true })
 export class ScrapPurchase extends Document {
-  @Prop({ required: true, unique: true })
+  @Prop({ type: String, required: true, unique: true })
   purchaseNo: string;
 
-  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Supplier', required: true })
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'Supplier',
+    required: true,
+  })
   supplier: Supplier;
 
-  @Prop({ required: true })
+  @Prop({ type: String, required: true })
   materialType: string;
 
-  @Prop({ required: true })
+  @Prop({ type: Number, required: true })
   quantity: number;
 
-  @Prop({ default: 'kg' })
+  @Prop({ type: String, default: 'kg' })
   unit: string;
 
-  @Prop({ required: true })
+  @Prop({ type: Number, required: true })
   unitPrice: number;
 
-  @Prop({ required: true })
+  @Prop({ type: Number, required: true })
   totalAmount: number;
 
-  @Prop({ required: true })
+  @Prop({ type: Number, required: true })
   remainingQuantity: number;
 
-  @Prop({ default: ScrapPurchaseStatus.RECEIVED })
+  @Prop({ type: String, enum: ScrapPurchaseStatus, default: ScrapPurchaseStatus.RECEIVED })
   status: ScrapPurchaseStatus;
 
-  @Prop()
+  @Prop({ type: String })
   remarks?: string;
 
-  @Prop({ default: () => new Date() })
+  @Prop({ type: Date, default: () => new Date() })
   purchaseDate: Date;
 }
 

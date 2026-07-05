@@ -1,58 +1,57 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Country } from './Country.schema';
-import { Address } from './Address.schema';
+import { Address, AddressSchema } from './Address.schema';
 
-@Schema({versionKey: false, timestamps:true})
+@Schema({ versionKey: false, timestamps: true })
 export class Customer extends Document {
-
-  @Prop({ required: false, default: '' })
+  @Prop({ type: String, required: false, default: '' })
   vatNumber?: string;
 
-  @Prop({default: false})
+  @Prop({ type: Boolean, default: false })
   billWithoutVat?: boolean;
 
-  @Prop({default: false})
+  @Prop({ type: Boolean, default: false })
   usePriceList1?: boolean;
 
-  @Prop({default: false})
+  @Prop({ type: Boolean, default: false })
   usePriceList2?: boolean;
 
-  @Prop({default: false})
+  @Prop({ type: Boolean, default: false })
   usePriceList3?: boolean;
 
-  @Prop({default: false})
+  @Prop({ type: Boolean, default: false })
   usePriceList4?: boolean;
 
-  @Prop({required:false})
+  @Prop({ type: Number, required: false })
   permanentDiscount?: number;
 
-  @Prop()
+  @Prop({ type: Number })
   fidelity?: number;
 
-  @Prop({default: false})
-  blockClient?: boolean
+  @Prop({ type: Boolean, default: false })
+  blockClient?: boolean;
 
-  @Prop({ required: true, unique: true })
+  @Prop({ type: Number, required: true, unique: true })
   customerCode: number;
 
-  @Prop({ required: true })
-  nameDenomination: string;  //maybe needed to change in future for relationship with prices
+  @Prop({ type: String, required: true })
+  nameDenomination: string;
 
-  @Prop()
+  @Prop({ type: String })
   firstName: string;
 
-  @Prop({required: false})
+  @Prop({ type: String, required: false })
   EOID?: string;
 
-  @Prop({required: false})
+  @Prop({ type: String, required: false })
   FID?: string;
 
-  @Prop({type: Address, required: true })
-  billingAddress: Address
+  @Prop({ type: AddressSchema, required: true })
+  billingAddress: Address;
 
-  @Prop({type: Address, required: false })
-  deliveryAddress?: Address
+  @Prop({ type: AddressSchema, required: false })
+  deliveryAddress?: Address;
 
   @Prop({
     type: MongooseSchema.Types.ObjectId,
@@ -61,21 +60,20 @@ export class Customer extends Document {
   })
   country?: Country;
 
-  @Prop()
+  @Prop({ type: String })
   tel1?: string;
 
-  @Prop()
+  @Prop({ type: String })
   tel2?: string;
 
-  @Prop({unique: true, sparse: true})
+  @Prop({ type: String, unique: true, sparse: true })
   email: string;
 
-  @Prop()
-  remarks?: string; 
+  @Prop({ type: String })
+  remarks?: string;
 
   createdAt?: Date;
   updatedAt?: Date;
-
 }
 
 export const CustomerSchema = SchemaFactory.createForClass(Customer);

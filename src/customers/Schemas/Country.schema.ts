@@ -1,12 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-@Schema({versionKey: false})
+@Schema({ versionKey: false })
 export class Country extends Document {
-  @Prop({ required: true, unique: true })
+  @Prop({ type: String, required: true, unique: true })
   countryName: string;
 
-  @Prop()
+  @Prop({ type: String })
   countryCode: string;
 }
 

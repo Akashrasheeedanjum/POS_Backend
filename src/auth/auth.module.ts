@@ -13,8 +13,8 @@ import { UserSchema } from './schema/user.schemas';
   imports: [
     // use ConfigModule
     ConfigModule.forRoot({
-      envFilePath: '.env',
-      isGlobal: true
+      isGlobal: true,
+      ignoreEnvFile: process.env.VERCEL === '1',
     }),
     // Use Passport Module
     PassportModule,

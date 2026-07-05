@@ -1,59 +1,59 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
-@Schema()
+@Schema({ _id: false })
 export class OptionalParameters extends Document {
-    @Prop({ default: false })
-    checkUpdateAtStartup: boolean;
+  @Prop({ type: Boolean, default: false })
+  checkUpdateAtStartup: boolean;
 
-    @Prop({ default: true })
-    touchKeyboardEnabledByDefault: boolean;
+  @Prop({ type: Boolean, default: true })
+  touchKeyboardEnabledByDefault: boolean;
 
-    @Prop({ default: false })
-    roundCashPaymentsTo5Cents: boolean;
+  @Prop({ type: Boolean, default: false })
+  roundCashPaymentsTo5Cents: boolean;
 
-    @Prop({ default: true })
-    backupAtClosing: boolean;
+  @Prop({ type: Boolean, default: true })
+  backupAtClosing: boolean;
 
-    @Prop({ default: false })
-    identificationBeforeEachSale: boolean;
+  @Prop({ type: Boolean, default: false })
+  identificationBeforeEachSale: boolean;
 
-    @Prop({ default: false })
-    managementPanels: boolean;
+  @Prop({ type: Boolean, default: false })
+  managementPanels: boolean;
 
-    @Prop({ default: false })
-    keyboardInCapitalActivated: boolean;
+  @Prop({ type: Boolean, default: false })
+  keyboardInCapitalActivated: boolean;
 
-    @Prop({ default: false })
-    proposeLastDocumentTypeUsed: boolean;
+  @Prop({ type: Boolean, default: false })
+  proposeLastDocumentTypeUsed: boolean;
 
-    @Prop({ default: false })
-    checkStockAtSale: boolean;
+  @Prop({ type: Boolean, default: false })
+  checkStockAtSale: boolean;
 
-    @Prop({ default: '<< MERCI DE VOTRE VISITE >>' })
-    endOrderMessage: string;
+  @Prop({ type: String, default: '<< MERCI DE VOTRE VISITE >>' })
+  endOrderMessage: string;
 
-    @Prop({ default: false })
-    includeSalesInInboundHistory: boolean;
+  @Prop({ type: Boolean, default: false })
+  includeSalesInInboundHistory: boolean;
 
-    @Prop({ default: false })
-    includeSalesByClientInClosure: boolean;
+  @Prop({ type: Boolean, default: false })
+  includeSalesByClientInClosure: boolean;
 
-    @Prop({ default: false })
-    simplifiedFinancialReport: boolean;
+  @Prop({ type: Boolean, default: false })
+  simplifiedFinancialReport: boolean;
 
-    @Prop({ default: true })
-    multiStoreVersionKeepLocalHistory: boolean;
+  @Prop({ type: Boolean, default: true })
+  multiStoreVersionKeepLocalHistory: boolean;
 
-    @Prop({ default: false })
-    deleteDataLocallyAfterSentToServer: boolean;
+  @Prop({ type: Boolean, default: false })
+  deleteDataLocallyAfterSentToServer: boolean;
 
-    // Repair Order Fields
-    @Prop({ default: false })
-    manageRepairs: boolean;
+  @Prop({ type: Boolean, default: false })
+  manageRepairs: boolean;
 
-    @Prop({ default: 12 }) 
-    vatCodeApplied: number;
+  @Prop({ type: Number, default: 12 })
+  vatCodeApplied: number;
 }
 
-export const OptionalParametersSchema = SchemaFactory.createForClass(OptionalParameters);
+export const OptionalParametersSchema =
+  SchemaFactory.createForClass(OptionalParameters);

@@ -1,25 +1,25 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
-import { Access } from "./access.schema";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+import { Access, AccessSchema } from './access.schema';
 
 export enum Role {
-    ISADMIN = 'admin',
-    USER = 'user'
+  ISADMIN = 'admin',
+  USER = 'user',
 }
 
-@Schema({versionKey: false})
+@Schema({ versionKey: false })
 export class User extends Document {
-    @Prop()
-    name: string;
+  @Prop({ type: String })
+  name: string;
 
-    @Prop()
-    password: string;
+  @Prop({ type: String })
+  password: string;
 
-    @Prop({ default: Role.USER })
-    role: Role;
+  @Prop({ type: String, enum: Role, default: Role.USER })
+  role: Role;
 
-    @Prop({ type: Access, required: false })
-    accesses?: Access;
+  @Prop({ type: AccessSchema, required: false })
+  accesses?: Access;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

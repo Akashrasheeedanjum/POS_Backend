@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import {Document, Schema as MongooseSchema } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 import { City } from './City.schema';
 
-@Schema({versionKey:false }) // Prevents Mongoose from auto-adding _id to subdocument
+@Schema({ versionKey: false })
 export class Address extends Document {
-  @Prop({ required: false })
+  @Prop({ type: String, required: false })
   address?: string;
 
   @Prop({
@@ -14,7 +14,7 @@ export class Address extends Document {
   })
   city?: City;
 
-  @Prop({ required: false })
+  @Prop({ type: String, required: false })
   zipCode?: string;
 }
 

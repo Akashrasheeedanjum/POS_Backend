@@ -68,10 +68,10 @@ interface ArticleSnapshot {
 @Schema({versionKey: false, timestamps:true})
 export class Ticket extends Document {
 
-  @Prop({ required: true, unique: true })
+  @Prop({ type: String, required: true, unique: true })
   ticketNumber: string;
 
-  @Prop({required: true, default: 1})
+  @Prop({ type: Number, required: true, default: 1 })
   register: number;        
 
 
@@ -144,28 +144,28 @@ export class Ticket extends Document {
   }])
   discountDetails: DiscountDetails[]
   
-  @Prop({type:Number, required:false})
+  @Prop({ type: Number, required: false })
   discountedAmountTotal: number;
 
-  @Prop({required: true})
-  totalQuantity: number;     //total number of products bought by customer
+  @Prop({ type: Number, required: true })
+  totalQuantity: number;
 
-  @Prop({required: true})
-  totalAmount_VatIncluded: number;        //total amount for whole receipt (each article's total vatInclude amount merged as one)
-  
-  @Prop({required: true})
-  totalAmount_VatExcluded: number;        //total amount without any vat
+  @Prop({ type: Number, required: true })
+  totalAmount_VatIncluded: number;
 
-  @Prop({required: true})
-  totalVat_amount: number;      //all vats amounts 
+  @Prop({ type: Number, required: true })
+  totalAmount_VatExcluded: number;
 
-  @Prop({required: false})
-  perceivedAmount: number;      //how much customer has given
+  @Prop({ type: Number, required: true })
+  totalVat_amount: number;
 
-  @Prop({default: 0, required:false})
-  balanceDue?: number;          //if customer has any amount still to pay
+  @Prop({ type: Number, required: false })
+  perceivedAmount: number;
 
-  @Prop({required:false})
+  @Prop({ type: Number, default: 0, required: false })
+  balanceDue?: number;
+
+  @Prop({ type: Number, required: false })
   ToRenderAmount?: number; 
 
   @Prop({type: Date, required:false})
@@ -184,32 +184,31 @@ export class Ticket extends Document {
   })
   vatVersion: VatVersion;       //version of vats applied on receipt
 
-  @Prop()
-  vatVersionLabel: string; 
+  @Prop({ type: String })
+  vatVersionLabel: string;
 
+  @Prop({ type: Number, default: 0 })
+  basePrice_withoutVat_1: number;
 
-  @Prop({default: 0})
-  basePrice_withoutVat_1: number;    //amount of those articles that have vat1 but the amount is without vat
-  
-  @Prop({default: 0})
-  vat1_appliedAmount: number;       //combined amount of only vat after applying vat1 on corresponding articles 
+  @Prop({ type: Number, default: 0 })
+  vat1_appliedAmount: number;
 
-  @Prop({default: 0})
-  basePrice_withoutVat_2: number; 
+  @Prop({ type: Number, default: 0 })
+  basePrice_withoutVat_2: number;
 
-  @Prop({default: 0})
+  @Prop({ type: Number, default: 0 })
   vat2_appliedAmount: number;
 
-  @Prop({default: 0})
-  basePrice_withoutVat_3: number; 
-  
-  @Prop({default: 0})
+  @Prop({ type: Number, default: 0 })
+  basePrice_withoutVat_3: number;
+
+  @Prop({ type: Number, default: 0 })
   vat3_appliedAmount: number;
-  
-  @Prop({default: 0})
-  basePrice_withoutVat_4: number; 
-  
-  @Prop({default: 0})
+
+  @Prop({ type: Number, default: 0 })
+  basePrice_withoutVat_4: number;
+
+  @Prop({ type: Number, default: 0 })
   vat4_appliedAmount: number;
 
   @Prop({ type: Date, required: false })

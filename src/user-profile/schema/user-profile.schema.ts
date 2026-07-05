@@ -1,41 +1,45 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document, Schema as MongooseSchema } from "mongoose";
-import { Bank } from "src/bank/schema/bank.schema";
-import { OptionalParameters } from "./optional-parameters.schema";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
+import { Bank } from 'src/bank/schema/bank.schema';
+import {
+  OptionalParameters,
+  OptionalParametersSchema,
+} from './optional-parameters.schema';
 
 @Schema()
 export class UserProfile extends Document {
-    @Prop()
-    name: string;
+  @Prop({ type: String })
+  name: string;
 
-    @Prop()
-    address: string;
+  @Prop({ type: String })
+  address: string;
 
-    @Prop()
-    city: string;
+  @Prop({ type: String })
+  city: string;
 
-    @Prop()
-    zipCode: string;
+  @Prop({ type: String })
+  zipCode: string;
 
-    @Prop()
-    tel: string;
+  @Prop({ type: String })
+  tel: string;
 
-    @Prop()
-    fax: string;
+  @Prop({ type: String })
+  fax: string;
 
-    @Prop()
-    email: string;
+  @Prop({ type: String })
+  email: string;
 
-    @Prop()
-    indicatonMandatory: string;
+  @Prop({ type: String })
+  indicatonMandatory: string;
 
-    // Change to array of Bank references
-    @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Bank' }],
-    default: [] })
-    banks: Bank[];
+  @Prop({
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Bank' }],
+    default: [],
+  })
+  banks: Bank[];
 
-    @Prop({ type: OptionalParameters, default: {} })
-    optionalParameters: OptionalParameters;
+  @Prop({ type: OptionalParametersSchema, default: {} })
+  optionalParameters: OptionalParameters;
 }
 
 export const UserProfileSchema = SchemaFactory.createForClass(UserProfile);

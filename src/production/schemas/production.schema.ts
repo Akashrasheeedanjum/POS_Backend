@@ -9,37 +9,41 @@ export enum ProductionStatus {
 
 @Schema({ versionKey: false, timestamps: true })
 export class Production extends Document {
-  @Prop({ required: true, unique: true })
+  @Prop({ type: String, required: true, unique: true })
   productionNo: string;
 
-  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'ScrapPurchase', required: true })
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'ScrapPurchase',
+    required: true,
+  })
   scrapPurchase: ScrapPurchase;
 
-  @Prop({ required: true })
+  @Prop({ type: Number, required: true })
   quantityUsed: number;
 
-  @Prop({ required: true })
+  @Prop({ type: String, required: true })
   outputDesignation: string;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Article' })
   outputArticle?: Article;
 
-  @Prop({ required: true })
+  @Prop({ type: Number, required: true })
   outputQuantity: number;
 
-  @Prop({ required: true })
+  @Prop({ type: Number, required: true })
   productionCost: number;
 
-  @Prop({ required: true })
+  @Prop({ type: Number, required: true })
   unitCost: number;
 
-  @Prop({ default: ProductionStatus.COMPLETED })
+  @Prop({ type: String, enum: ProductionStatus, default: ProductionStatus.COMPLETED })
   status: ProductionStatus;
 
-  @Prop()
+  @Prop({ type: String })
   remarks?: string;
 
-  @Prop({ default: () => new Date() })
+  @Prop({ type: Date, default: () => new Date() })
   productionDate: Date;
 }
 

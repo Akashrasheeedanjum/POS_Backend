@@ -1,16 +1,16 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
-@Schema({versionKey: false})
+@Schema({ versionKey: false })
 export class Template extends Document {
-    @Prop({unique: true})
-    name: string;
+  @Prop({ type: String, unique: true })
+  name: string;
 
-    @Prop()
-    templateContent:string
+  @Prop({ type: String })
+  templateContent: string;
 
-    @Prop({ default: false })
-    selected: boolean; 
+  @Prop({ type: Boolean, default: false })
+  selected: boolean;
 }
 
 export const TemplateSchema = SchemaFactory.createForClass(Template);

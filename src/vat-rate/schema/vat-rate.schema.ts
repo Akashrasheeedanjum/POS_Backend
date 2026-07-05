@@ -3,13 +3,13 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class VatRate extends Document {
-  @Prop({ required: true, unique: true }) // Unique identifier (e.g., "VAT1")
+  @Prop({ type: String, required: true, unique: true })
   code: string;
 
-  @Prop({ required: true }) // VAT percentage (e.g., 12)
+  @Prop({ type: Number, required: true })
   rate: number;
 
-  @Prop({ default: true }) // Enable/disable the VAT rate
+  @Prop({ type: Boolean, default: true })
   isActive: boolean;
 }
 

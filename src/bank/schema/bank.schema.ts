@@ -8,14 +8,14 @@ export class Bank extends Document {
     description: 'The name of the bank',
     example: 'Example Bank',
   })
-  @Prop({ required: true })
+  @Prop({ type: String, required: true })
   bankName: string;
 
   @ApiProperty({
     description: 'The unique number of the bank',
     example: '123456',
   })
-  @Prop({ required: true, unique: true })
+  @Prop({ type: String, required: true, unique: true })
   bankNumber: string;
 }
 

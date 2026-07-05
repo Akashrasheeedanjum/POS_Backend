@@ -24,8 +24,8 @@ import { BusinessReportsModule } from './business-reports/business-reports.modul
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env',
       isGlobal: true,
+      ignoreEnvFile: process.env.VERCEL === '1',
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -38,8 +38,10 @@ import { BusinessReportsModule } from './business-reports/business-reports.modul
         }
         return {
           uri,
-          serverSelectionTimeoutMS: 15000,
-          maxPoolSize: 5,
+          serverSelectionTimeoutMS: 10000,
+          maxPoolSize: 1,
+          minPoolSize: 0,
+          bufferCommands: false,
         };
       },
       inject: [ConfigService],

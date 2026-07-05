@@ -3,13 +3,23 @@ import { Document } from 'mongoose';
 
 @Schema({ timestamps: true })
 export class VatVersion extends Document {
-  @Prop({ required: true }) versionLabel: string; // For display in dropdown
-  @Prop({ required: true }) VAT1: number;
-  @Prop({ required: true }) VAT2: number;
-  @Prop({ required: true }) VAT3: number;
-  @Prop({ required: true }) VAT4: number;
+  @Prop({ type: String, required: true })
+  versionLabel: string;
 
-  @Prop({ default: () => new Date() }) effectiveFrom: Date; // For date filtering
+  @Prop({ type: Number, required: true })
+  VAT1: number;
+
+  @Prop({ type: Number, required: true })
+  VAT2: number;
+
+  @Prop({ type: Number, required: true })
+  VAT3: number;
+
+  @Prop({ type: Number, required: true })
+  VAT4: number;
+
+  @Prop({ type: Date, default: () => new Date() })
+  effectiveFrom: Date;
 }
 
 export const VatVersionSchema = SchemaFactory.createForClass(VatVersion);
