@@ -1,20 +1,24 @@
-// src/bootstrap.ts
+import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from '../src/app.module';
+import { ExpressAdapter } from '@nestjs/platform-express';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
+import express from 'express';
+import { AppModule } from '../src/app.module';
+
+const expressApp = express();
 
 export async function bootstrapApp(isServerless = false) {
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const app = await NestFactory.create(
+    AppModule,
+    new ExpressAdapter(expressApp),
+    { cors: true },
+  );
 
-  // Enable CORS
   app.enableCors();
-
-  // Set global prefix for versioning
   app.setGlobalPrefix('v1');
 
-  // Use global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -24,16 +28,14 @@ export async function bootstrapApp(isServerless = false) {
     }),
   );
 
-  // Load configuration
   const configService = app.get(ConfigService);
-  const apiTitle = configService.get<string>('API_TITLE', 'Flexo');
+  const apiTitle = configService.get<string>('API_TITLE', 'Lahore POS API');
   const apiDescription = configService.get<string>(
     'API_DESCRIPTION',
-    'Flexo API Endpoint to test',
+    'Lahore POS Backend API',
   );
   const apiVersion = configService.get<string>('API_VERSION', '1.0');
 
-  // Configure Swagger
   const swaggerConfig = new DocumentBuilder()
     .setTitle(apiTitle)
     .setDescription(apiDescription)
@@ -52,26 +54,25 @@ export async function bootstrapApp(isServerless = false) {
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api/swagger', app, document, {
-    customJs: [
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.js',
-    ],
-    customCssUrl: [
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.css',
-    ],
+  SwaggerModule.setup('api/swagger', app, document);
+
+  expressApp.get('/', (_req, res) => {
+    res.json({
+      status: 'ok',
+      message: 'Lahore POS API is running',
+      api: '/v1',
+      swagger: '/api/swagger',
+    });
   });
 
   if (isServerless) {
     return app;
-  } else {
-    const port = configService.get<number>('PORT', 3001);
-    await app.listen(port);
-    console.log(`Application is running on: http://localhost:${port}/v1`);
-    console.log(
-      `Swagger API documentation is available on: http://localhost:${port}/api/swagger`,
-    );
   }
+
+  const port = configService.get<number>('PORT', 3001);
+  await app.listen(port);
+  console.log(`Application is running on: http://localhost:${port}/v1`);
+  console.log(
+    `Swagger API documentation is available on: http://localhost:${port}/api/swagger`,
+  );
 }

@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { bootstrapApp } from './bootstrap';
 
 let cachedServer: any;
