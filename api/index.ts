@@ -1,32 +1,34 @@
-// // api/index.ts
-// import { NestFactory } from '@nestjs/core';
-// import { AppModule } from '../src/app.module';
-// import { Server } from 'http';
-
-// let cachedServer: any;
-
-// export default async function handler(req: any, res: any) {
-//   if (!cachedServer) {
-//     const app = await NestFactory.create(AppModule);
-//     app.setGlobalPrefix('v1');
-//     app.enableCors();
-//     await app.init(); // no app.listen()
-//     const expressApp = app.getHttpAdapter().getInstance();
-//     cachedServer = expressApp;
-//   }
-//   return cachedServer(req, res);
-// }
-
-
-import 'tsconfig-paths/register';
 import { bootstrapApp } from './bootstrap';
 
 let cachedServer: any;
+let bootstrapError: Error | null = null;
 
 export default async function handler(req: any, res: any) {
-  if (!cachedServer) {
-    const app = await bootstrapApp(true);
-    cachedServer = app.getHttpAdapter().getInstance();
+  try {
+    if (bootstrapError) {
+      res.status(500).json({
+        statusCode: 500,
+        message: bootstrapError.message,
+        hint: 'Check Vercel env vars: MONGO_URI, JWT_SECRET, CLERK_SECRET_KEY',
+      });
+      return;
+    }
+
+    if (!cachedServer) {
+      const app = await bootstrapApp(true);
+      await app.init();
+      cachedServer = app.getHttpAdapter().getInstance();
+    }
+
+    return cachedServer(req, res);
+  } catch (error: any) {
+    console.error('Vercel serverless handler error:', error);
+    if (!cachedServer) {
+      bootstrapError = error;
+    }
+    res.status(500).json({
+      statusCode: 500,
+      message: error?.message || 'Internal server error',
+    });
   }
-  return cachedServer(req, res);
 }

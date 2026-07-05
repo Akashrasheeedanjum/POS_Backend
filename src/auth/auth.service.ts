@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import mongoose, { isValidObjectId, Model } from 'mongoose';
 import { loginDto } from './dto/login.dto';
 import { CreateUserDto } from './dto/register-dto';

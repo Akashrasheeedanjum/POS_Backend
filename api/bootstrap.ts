@@ -65,7 +65,6 @@ export async function bootstrapApp(isServerless = false) {
   });
 
   if (isServerless) {
-    await app.init(); // For Vercel
     return app;
   } else {
     const port = configService.get<number>('PORT', 3001);

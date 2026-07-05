@@ -9,7 +9,6 @@ import { SaveTemplateDto, UpdateTemplateDto } from './dtos/SaveTemplate.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Template } from './Schemas/Template.schema';
 import { isValidObjectId, Model } from 'mongoose';
-import chromium from '@sparticuz/chromium';
 import { DEFAULT_RECEIPT_TEMPLATE } from './default-receipt.template';
 
 @Injectable()
@@ -160,25 +159,25 @@ export class PrinterSettingsService {
   }
 
   async generatePdf(html: string) {
-
     const isVercel = process.env.VERCEL === '1';
 
-    //  IMPORTANT: dynamic import
     const puppeteer = isVercel
       ? await import('puppeteer-core')
       : await import('puppeteer');
 
-    const browser = await puppeteer.default.launch(
-      isVercel
-        ? {
-            args: [...chromium.args, '--disable-dev-shm-usage'],
-            executablePath: await chromium.executablePath(),
-            headless: true,
-          }
-        : {
-            headless: true, // ✅ works because puppeteer includes Chromium
-          },
-    );
+    const launchOptions = isVercel
+      ? {
+          args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox'],
+          executablePath: await (
+            await import('@sparticuz/chromium')
+          ).default.executablePath(),
+          headless: true,
+        }
+      : {
+          headless: true,
+        };
+
+    const browser = await puppeteer.default.launch(launchOptions);
 
     const page = await browser.newPage();
 

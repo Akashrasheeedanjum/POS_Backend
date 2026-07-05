@@ -29,9 +29,19 @@ import { BusinessReportsModule } from './business-reports/business-reports.modul
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGO_URI'),
-      }),
+      useFactory: (configService: ConfigService) => {
+        const uri = configService.get<string>('MONGO_URI');
+        if (!uri) {
+          throw new Error(
+            'MONGO_URI is not set. Add it in Vercel Project Settings → Environment Variables.',
+          );
+        }
+        return {
+          uri,
+          serverSelectionTimeoutMS: 15000,
+          maxPoolSize: 5,
+        };
+      },
       inject: [ConfigService],
     }),
     AuthModule,
