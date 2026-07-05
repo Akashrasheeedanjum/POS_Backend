@@ -13,6 +13,15 @@ async function bootstrap() {
   // Set global prefix for versioning
   app.setGlobalPrefix('v1');
 
+  app.getHttpAdapter().get('/', (_req, res) => {
+    res.json({
+      status: 'ok',
+      message: 'Lahore POS API is running',
+      api: '/v1',
+      swagger: '/api/swagger',
+    });
+  });
+
   // Use global validation pipe for request validation
   app.useGlobalPipes(
     new ValidationPipe({
