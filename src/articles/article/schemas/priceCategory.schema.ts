@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { VatRate } from 'src/vat-rate/schema/vat-rate.schema';
+import { VatRate } from '../../../vat-rate/schema/vat-rate.schema';
 
 @Schema({ timestamps: true })
 export class PriceCategory extends Document {

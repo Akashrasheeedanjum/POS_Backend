@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Supplier } from 'src/suppliers/Schemas/Supplier.schema';
+import { Supplier } from '../../suppliers/Schemas/Supplier.schema';
 
 export enum ScrapPurchaseStatus {
   RECEIVED = 'received',

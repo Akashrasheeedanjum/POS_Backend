@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query, Request, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { SalesManagementService } from './sales-management.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { RolesGuard } from '../auth/roles.guard';
 import { Roles } from '../auth/roles.decorator';
-import { Role } from 'src/auth/schema/user.schemas';
+import { Role } from '../auth/schema/user.schemas';
 import { CreateTicketDto } from './dtos/CreateTicket.dto';
 import { UpdateTicketDto } from './dtos/UpdateTicket.dto';
 import { WaitingTicketDto } from './dtos/WaitingTicket.dto';

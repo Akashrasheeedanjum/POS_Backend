@@ -2,8 +2,8 @@ import { Body, Controller, Delete, Get, Param, Post, Put, Query, Request, Unauth
 import { SuppliersService } from './suppliers.service';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateSupplierDto, UpdateSupplierDto } from './dtos/CreateSupplier.dto';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { RolesGuard } from '../auth/roles.guard';
 
 @ApiTags('suppliers') 
 @Controller('suppliers')

@@ -4,7 +4,7 @@ import { Supplier } from './Schemas/Supplier.schema';
 import { isValidObjectId, Model } from 'mongoose';
 import { CreateSupplierDto, UpdateSupplierDto } from './dtos/CreateSupplier.dto';
 import { v4 as uuidv4 } from 'uuid';
-import { City } from 'src/customers/Schemas/City.schema';
+import { City } from '../customers/Schemas/City.schema';
 import { format } from 'date-fns';
 
 @Injectable()

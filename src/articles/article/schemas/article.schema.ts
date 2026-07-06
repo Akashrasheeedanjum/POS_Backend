@@ -1,9 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Category } from 'src/articles/category/schemas/category.schema';
-import { SubCategory } from 'src/articles/category/subcategory/schemas/subcategory.schema';
+import { Category } from '../../category/schemas/category.schema';
+import { SubCategory } from '../../category/subcategory/schemas/subcategory.schema';
 import { PriceCategory } from './priceCategory.schema';
-import { Supplier } from 'src/suppliers/Schemas/Supplier.schema';
+import { Supplier } from '../../../suppliers/Schemas/Supplier.schema';
 
 @Schema({ timestamps: true })
 export class Article extends Document {

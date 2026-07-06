@@ -41,8 +41,8 @@ import { PriceCategoryDto } from './dto/price-category.dto';
 import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import { UpdateArticleDto, UpdateArticleStockDTO } from './dto/update-article.dto';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
+import { RolesGuard } from '../../auth/roles.guard';
 
 @ApiTags('Articles')
 @Controller('articles')

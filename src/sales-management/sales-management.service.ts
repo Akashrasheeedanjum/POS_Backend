@@ -1,20 +1,20 @@
 import { BadRequestException, HttpException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
-import { updateUserDto } from 'src/auth/dto/updateUser.dto';
+import { updateUserDto } from '../auth/dto/updateUser.dto';
 import { CreateTicketDto } from './dtos/CreateTicket.dto';
 import cloneDeep from 'lodash/cloneDeep';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
-import { VatVersion } from 'src/vat-rate/schema/vatRate-version.schema';
+import { VatVersion } from '../vat-rate/schema/vatRate-version.schema';
 import { Connection, isValidObjectId, Model, Types } from 'mongoose';
 import { ReceiptType, Ticket, TicketStatus } from './Schemas/Ticket.schema';
 import { TicketCounter } from './Schemas/TicketCounter.schema';
 import { UpdateTicketDto } from './dtos/UpdateTicket.dto';
 import dayjs from 'dayjs';
 import { format } from 'date-fns';
-import { Article } from 'src/articles/article/schemas/article.schema';
+import { Article } from '../articles/article/schemas/article.schema';
 import { WaitingTicketDto } from './dtos/WaitingTicket.dto';
 import { WaitingTicket } from './Schemas/WaitingTicket.schema';
 import { EditTicketDto } from './dtos/EditTicket.dto';
-import { Customer } from 'src/customers/Schemas/Customer.schema';
+import { Customer } from '../customers/Schemas/Customer.schema';
 
 
 // hi aajjajja

@@ -2,10 +2,10 @@ import { Body, Controller, Delete, Get, Param, Post, Put, Query, Req, Request, U
 import { CustomersService } from './customers.service';
 import { CreateCustomerDto, UpdateCustomerDto } from './dtos/CreateCustomer.dto';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/roles.guard';
-import { Roles } from 'src/auth/roles.decorator';
-import { Role } from 'src/auth/schema/user.schemas';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { RolesGuard } from '../auth/roles.guard';
+import { Roles } from '../auth/roles.decorator';
+import { Role } from '../auth/schema/user.schemas';
 
 @ApiTags('customers') 
 @Controller('customers')

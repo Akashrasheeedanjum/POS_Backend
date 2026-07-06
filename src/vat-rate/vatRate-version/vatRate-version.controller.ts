@@ -1,9 +1,9 @@
 import { Controller, Get, Put, Request, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { VatRateVersionService } from './vatRate-version.service';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/roles.guard';
-import { Roles } from 'src/auth/roles.decorator';
-import { Role } from 'src/auth/schema/user.schemas';
+import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
+import { RolesGuard } from '../../auth/roles.guard';
+import { Roles } from '../../auth/roles.decorator';
+import { Role } from '../../auth/schema/user.schemas';
 
 @Controller('vatRate-version')
 export class VatRateVersionController {

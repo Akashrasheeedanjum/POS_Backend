@@ -11,7 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { BankService } from './bank.service';
 import { CreateBankDto } from './dto/create-bank.dto';
 import { UpdateBankDto } from './dto/update-bank.dto';

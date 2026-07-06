@@ -1,11 +1,11 @@
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import {Document, Schema as MongooseSchema, Types } from 'mongoose';
-import { Article } from 'src/articles/article/schemas/article.schema';
-import { User } from 'src/auth/schema/user.schemas';
-import { Customer } from 'src/customers/Schemas/Customer.schema';
-import { PaymentMethod } from 'src/financial-parameters/schema/payment-method.schema';
-import { VatVersion } from 'src/vat-rate/schema/vatRate-version.schema';
+import { Article } from '../../articles/article/schemas/article.schema';
+import { User } from '../../auth/schema/user.schemas';
+import { Customer } from '../../customers/Schemas/Customer.schema';
+import { PaymentMethod } from '../../financial-parameters/schema/payment-method.schema';
+import { VatVersion } from '../../vat-rate/schema/vatRate-version.schema';
 
 interface ArticleSnapshot {  
   articleId: Types.ObjectId | Article; 

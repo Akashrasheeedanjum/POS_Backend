@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, InternalServerErrorException, NotFound
 import { InjectModel } from '@nestjs/mongoose';
 import { isValidObjectId, Model } from 'mongoose';
 import { UserProfile } from './schema/user-profile.schema';
-import { Bank } from 'src/bank/schema/bank.schema';
+import { Bank } from '../bank/schema/bank.schema';
 import { CreateUserProfileDto, UpdateUserProfileDto } from './dto/create-user-profile.dto';
 
 @Injectable()

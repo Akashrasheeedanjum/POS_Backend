@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Bank } from 'src/bank/schema/bank.schema';
+import { Bank } from '../../bank/schema/bank.schema';
 import {
   OptionalParameters,
   OptionalParametersSchema,

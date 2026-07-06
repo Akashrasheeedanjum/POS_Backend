@@ -6,14 +6,14 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { isValidObjectId, Model } from 'mongoose';
-import { ArticleService } from 'src/articles/article/article.service';
-import { TicketCounter } from 'src/sales-management/Schemas/TicketCounter.schema';
+import { ArticleService } from '../articles/article/article.service';
+import { TicketCounter } from '../sales-management/Schemas/TicketCounter.schema';
 import {
   ScrapPurchase,
   ScrapPurchaseStatus,
-} from 'src/scrap-purchase/schemas/scrap-purchase.schema';
-import { Article } from 'src/articles/article/schemas/article.schema';
-import { VatRate } from 'src/vat-rate/schema/vat-rate.schema';
+} from '../scrap-purchase/schemas/scrap-purchase.schema';
+import { Article } from '../articles/article/schemas/article.schema';
+import { VatRate } from '../vat-rate/schema/vat-rate.schema';
 import { CreateProductionDto } from './dto/create-production.dto';
 import { Production, ProductionStatus } from './schemas/production.schema';
 

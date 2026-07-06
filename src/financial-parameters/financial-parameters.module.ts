@@ -6,7 +6,7 @@ import { FinancialParameters, FinancialParametersSchema } from './schema/financi
 import { PaymentMethodController } from './payment-method/payment-method.controller';
 import { PaymentMethodService } from './payment-method/payment-method.service';
 import { PaymentMethod, PaymentMethodSchema } from './schema/payment-method.schema';
-import { VatRate, VatRateSchema } from 'src/vat-rate/schema/vat-rate.schema';
+import { VatRate, VatRateSchema } from '../vat-rate/schema/vat-rate.schema';
 
 @Module({
   imports: [

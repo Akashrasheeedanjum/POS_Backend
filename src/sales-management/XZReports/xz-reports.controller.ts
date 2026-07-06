@@ -16,8 +16,8 @@ import {
 import { Response } from 'express';
 import { XZReportsService } from './xz-reports.service';
 import { CreateZReportDto } from './dtos/createZReport.dto';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
+import { RolesGuard } from '../../auth/roles.guard';
 
 @Controller('xz-reports')
 export class XZReportsController {

@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query, Request, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { RolesGuard } from '../auth/roles.guard';
 import { CreateScrapPurchaseDto } from './dto/create-scrap-purchase.dto';
 import { ScrapPurchaseService } from './scrap-purchase.service';
 

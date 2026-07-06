@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Article } from 'src/articles/article/schemas/article.schema';
-import { ScrapPurchase } from 'src/scrap-purchase/schemas/scrap-purchase.schema';
+import { Article } from '../../articles/article/schemas/article.schema';
+import { ScrapPurchase } from '../../scrap-purchase/schemas/scrap-purchase.schema';
 
 export enum ProductionStatus {
   COMPLETED = 'completed',

@@ -1,8 +1,8 @@
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import {Document, Schema as MongooseSchema } from 'mongoose';
-import { User } from 'src/auth/schema/user.schemas';
-import { Customer } from 'src/customers/Schemas/Customer.schema';
+import { User } from '../../auth/schema/user.schemas';
+import { Customer } from '../../customers/Schemas/Customer.schema';
 import { WaitingArticleSnapshot } from '../dtos/WaitingTicket.dto';
 
 

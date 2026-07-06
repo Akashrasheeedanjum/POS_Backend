@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ScrapPurchase, ScrapPurchaseSchema } from 'src/scrap-purchase/schemas/scrap-purchase.schema';
-import { Ticket, TicketSchema } from 'src/sales-management/Schemas/Ticket.schema';
+import { ScrapPurchase, ScrapPurchaseSchema } from '../scrap-purchase/schemas/scrap-purchase.schema';
+import { Ticket, TicketSchema } from '../sales-management/Schemas/Ticket.schema';
 import { BusinessReportsController } from './business-reports.controller';
 import { BusinessReportsService } from './business-reports.service';
 

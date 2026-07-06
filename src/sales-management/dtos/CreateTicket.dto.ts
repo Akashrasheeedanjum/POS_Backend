@@ -14,7 +14,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { DiscountOnWhole, ReceiptType, SingleArticleDiscount, TicketStatus } from '../Schemas/Ticket.schema'; // adjust path accordingly
-import { VatCodeEnum } from 'src/vat-rate/dto/create-vat-rate.dto';
+import { VatCodeEnum } from '../../vat-rate/dto/create-vat-rate.dto';
 
 export class ArticleSnapshotDto {
   @IsMongoId()

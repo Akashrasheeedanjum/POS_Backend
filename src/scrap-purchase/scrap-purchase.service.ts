@@ -6,8 +6,8 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { isValidObjectId, Model } from 'mongoose';
-import { TicketCounter } from 'src/sales-management/Schemas/TicketCounter.schema';
-import { Supplier } from 'src/suppliers/Schemas/Supplier.schema';
+import { TicketCounter } from '../sales-management/Schemas/TicketCounter.schema';
+import { Supplier } from '../suppliers/Schemas/Supplier.schema';
 import { CreateScrapPurchaseDto } from './dto/create-scrap-purchase.dto';
 import {
   ScrapPurchase,

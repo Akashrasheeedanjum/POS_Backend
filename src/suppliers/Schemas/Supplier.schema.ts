@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { City } from 'src/customers/Schemas/City.schema';
+import { City } from '../../customers/Schemas/City.schema';
 
 @Schema({ versionKey: false, timestamps: true })
 export class Supplier extends Document {

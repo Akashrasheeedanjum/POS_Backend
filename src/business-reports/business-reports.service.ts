@@ -3,9 +3,9 @@ import { InjectModel } from '@nestjs/mongoose';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { Model } from 'mongoose';
-import { PAKISTAN_CURRENCY, PAKISTAN_TIMEZONE } from 'src/common/pakistan.constants';
-import { ScrapPurchase } from 'src/scrap-purchase/schemas/scrap-purchase.schema';
-import { Ticket, TicketStatus } from 'src/sales-management/Schemas/Ticket.schema';
+import { PAKISTAN_CURRENCY, PAKISTAN_TIMEZONE } from '../common/pakistan.constants';
+import { ScrapPurchase } from '../scrap-purchase/schemas/scrap-purchase.schema';
+import { Ticket, TicketStatus } from '../sales-management/Schemas/Ticket.schema';
 
 dayjs.extend(customParseFormat);
 
